@@ -1,0 +1,73 @@
+#chosenCourse {
+    width: 100%;
+    border: 2px solid black;
+
+}
+
+#selectedDishSearch {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 0px;
+    width: 100%;
+}
+
+#selectedDishSearchButton {
+    background-color: rgb(246,178,107);
+    border-radius: 0px;
+    box-shadow: 2px 2px;
+    border: 2px solid black;
+}
+
+#foodList {
+    background-color: #FFFFFF;
+    height:100%;
+
+}
+
+
+.foodContainer {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    background-color = "green";
+}
+
+.selectDishFoodPicture {
+    width:100%;
+    border-radius: 0px;
+    border-top: 3px solid #000000;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+}
+
+.selectDishFoodTitle{
+    width: 100%;
+    border-radius: 0px;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    border-left: 3px solid #000000;
+    border-right: 3px solid #000000;
+    background-color: rgb(221,221,221);
+    margin-bottom: 10px;
+    white-space: normal;
+}
+
+.row {
+    width:100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#selectDish .container {
+    width:100%;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+#selectDish #sidebar {
+    margin-left: -18px;
+    margin-top: -2px;
+}
+
+#foodList #firstFood {
+    margin-left: 35px;
+}

@@ -1,0 +1,430 @@
+body { 
+	padding-top: 106px; 
+	background-image: url("../images/background_tomato_eating.jpg");
+	background-size: cover;
+	font-family: "Century Gothic", sans-serif; /* fix font */
+}
+
+.navbar{	
+	padding-top: 40px;
+	/*background-color: rgba(255,204,51,0.5);*/
+	background-color: #d5d5d4;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #000000;
+}
+
+#navContainer {
+	margin-left: 0px;
+	position: relative;
+
+}
+
+.navbar #quote {
+	padding-left : 100px;
+	float:left;
+	padding-top: 25px;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 17px;
+}
+
+.navbar #myHeader {
+	font-size: 40px;
+	font-weight: bold;
+	float: left;
+	padding-left: 10px;
+
+}
+
+#mainStart {
+	margin-left: 20px;
+}
+
+#welcomeBox {
+	padding: 10px 10px 10px 30px;
+	margin-top: 350px; /* fixed, might be bad (?) */
+	float: left;
+	background-color: rgba(255,255,255,0.8);
+	width: 65%;	
+	max-width: 1000px;
+	font-weight: bold;
+
+}
+
+ .btn-default {
+	width: 50%;
+	max-height: 70px;
+	min-height: 25px;
+	margin-bottom: 20px;
+	background-color: rgba(250,146,27,1);
+	box-shadow: 3px 3px;
+	border: 1px 1px 1px 1px;
+	border-style: solid;
+	border-color: black;
+	font-weight: bolder;
+	font-size: 30px;
+}
+
+#confirmButton button {
+	width:100%;
+	margin-right: 10px;
+	font-size: 15px;
+	height: 10px;
+
+}
+#confirmButton{
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+hr {
+	border-color: #000000;
+	color: #000000;
+}
+
+#sidebar {
+	background-color: white;
+	position: fixed;
+	border-style: solid;
+	border-color: black;
+	height: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 15px;
+	padding-top: 10px;
+}
+
+
+#dishRow1 {
+	border-style: solid;
+	border-width: 3px;
+	margin-left: 5px !important;
+	margin-bottom: 5px;
+	margin-right: 5px !important;
+	margin-top: 5px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-right: 7px !important;
+	width: auto;
+	background-color: #f6f6f6; 
+}
+
+#dishRow1 .col {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#dishRow2 {
+	border-style: solid;
+	border-width: 3px;
+	margin-left: 5px !important;
+	margin-bottom: 5px;
+	margin-right: 5px !important;
+	margin-top: 5px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-right: 7px !important;
+	width: auto;
+	background-color: #f6f6f6; 
+}
+
+#dishRow2 .col {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#dishRow3 {
+	border-style: solid;
+	border-width: 3px;
+	margin-left: 5px !important;
+	margin-bottom: 5px;
+	margin-right: 5px !important;
+	margin-top: 5px;
+	padding-top: 6px;
+	padding-bottom: 4px;
+	padding-right: 7px !important;
+	width: auto;
+	background-color: #f6f6f6; 
+}
+
+#dishRow3 .col {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+
+#sideBarDiv .row {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+.overlay {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  float:left;
+}
+
+#incrementor {
+	float: left;
+	width:10%;
+	height: 100%;
+}
+
+#incrementor button {
+	height: 50%;
+	display: block;
+	float: left;
+}
+
+.glyphicon-chevron-up {
+	top: 0px;
+	line-height: 2px;
+	padding-left: 7px;
+	padding-right: 5px;
+
+}
+
+.glyphicon-chevron-down {
+	top: 0px;
+	line-height: 2px;
+
+}
+
+#ppl input {
+	float:left;
+	height:100%;
+	width: 20%;
+}
+
+#dishName {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-width: 2px;
+	border-bottom-width: 2px;
+	border-color: black;
+	background-color: #d5d5d4;
+	height: 40px;
+	margin-left: -10px;
+	margin-right: -10px;
+	padding-top: 10px;
+	padding-right: 15px !important;
+}
+
+#products {
+	height: 60px;
+	border-top-style: solid;
+	border-top-color: white;
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	padding-right: 15px !important;
+}
+
+#products p {
+	position: relative;
+  	top: 40%;
+  	transform: translateY(-40%);
+}
+
+#totalSum {
+	height: 60px;
+	border-top-style: solid;
+	border-top-color: white;
+	border-bottom-style: solid;
+	border-bottom-color: white;
+	padding-right: 15px;
+	padding-left: 10px;
+}
+
+#totalSum p {
+	position: relative;
+  	top: 40%;
+  	transform: translateY(-40%);
+
+}
+
+#foodImage {
+	width: 100%;
+}
+
+#page3 .btn-default {
+	font-size: 15px;	
+}
+
+#page3 {
+	margin-right: 0px;
+	margin-left: 0px;
+	width: 100%;
+}
+
+.row #ingredients {
+	font-size: 20px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	background-color: rgba(255,204,51,0.5);
+}
+
+.row h3 {
+	font-weight: bold;
+}
+
+#overview_page {
+	margin-left: 0px;
+	width: calc(100% - 15px);
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#print_page {
+	margin-left: 0px;
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#overview_page hr {
+	border-top: 2px solid;
+	margin-right: 30px;
+	margin-left: 45px;
+}
+
+#overview_banner {
+	border-style: solid;
+	border-color: black;
+	border-width: 5px;
+	margin-left: 0px;
+	background-color: rgba(255,204,51,0.5); 
+}
+
+#overview_banner .btn-default {
+	width: calc(100% - 20px);
+	margin-top: 20px;	
+	font-weight: normal;
+	margin-right: 20px;
+}
+
+#overview_banner h2 {
+	margin-top: 30px;
+	margin-left: 30px;
+	font-weight: bold;
+}
+
+#overview_food {
+	margin-top: 35px;
+	margin-bottom: 35px;
+
+}
+
+#overview_food img {
+	border-style: solid;
+	border-top-width: 3px;
+	border-right-width: 3px;
+	border-left-width: 3px;
+	border-color: black;
+	padding-top: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	vertical-align: top;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;	
+	width: 100%;
+
+}
+
+#overview_food .name {
+	text-align: center;
+	display: block;
+	background-color: #d5d5d4;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
+#overview_food .total {
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
+
+#overview_food .price {
+	text-align: right;
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #991d1d;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
+#overview_print .btn-default {
+	width: 100%;	
+	font-weight: normal;
+}
+
+#overview_print {
+	margin-top: 50px;
+}
+
+#verticalLine {
+	border-style: solid;
+	border-left-width: 3px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-top-width: 0px;
+	border-color: black;
+	padding-top: 275px;
+
+	
+}
+
+#dishSummary {
+	margin-top: 35px;
+	margin-left: 35px;
+	margin-right: 200px;
+	margin-bottom: 35px;
+}
+
+#dishSummary img {
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	padding: 1px;
+	vertical-align: top;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;	
+	width: 100%;
+
+}
+
+#dishSummary h2, h4 {
+	margin-top: 0px;
+	font-weight: bold;
+}
+
+.removeButton {
+	height: 20px;
+	line-height: 2px;
+	background-color: #dd1f28;
+	color: white;
+	padding-left: 3px;
+	padding-right: 3px;
+}
