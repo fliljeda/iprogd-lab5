@@ -1,0 +1,50 @@
+<ng-include src="'partials/dinner-header.html'"></ng-include>
+
+<div style="background-color: white" id="print_page" class="container" style="display: block;">
+    <div class="row" id="overview_banner">
+        <div class="col-md-4">
+            <h2>My Dinner: {{guests}} people </h2>
+        </div>
+        <div class="col-md-4"> </div>
+        <div class="col-md-4" id="backButtonDiv"> <button type="button" class="btn-default" id="goBackAndEditFromPrint">Go back and edit dinner</button></div>
+    </div>
+    <div class="row" id="dishSummary">
+        <div class="col-md-2"><img src="{{menu[0].image}}"></div>
+        <div class="col-md-4">
+            <h2>{{menu[0].title}}</h2>
+            <br>
+            <p>{{menu[0].instructions}}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>PREPARATION</h4>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </div>
+    </div>
+    <div class="row" id="dishSummary">
+        <div class="col-md-2"><img src="{{menu[1].image}}"></div>
+        <div class="col-md-4">
+            <h2>{{menu[1].title}}</h2>
+            <br>
+            <p>{{menu[1].instructions}}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>PREPARATION</h4>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </div>
+    </div>
+    <div class="row" id="dishSummary">
+        <div class="col-md-2"><img src="{{menu[2].image}}"></div>
+        <div class="col-md-4">
+            <h2>{{menu[2].title}}</h2>
+            <br>
+            <p>{{menu[2].instructions}}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>PREPARATION</h4>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        </div>
+    </div>
+</div>

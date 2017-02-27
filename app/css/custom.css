@@ -428,3 +428,13 @@ hr {
 	padding-left: 3px;
 	padding-right: 3px;
 }
+
+a {
+	text-decoration: none; 
+	color:black;
+}
+a:hover {
+	text-decoration: none; 
+	color:black;
+}
+

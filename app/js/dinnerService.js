@@ -90,19 +90,35 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		var dishToAdd = {};
-		this.getDish(id, function (dishToGet) {
-			dishToAdd = dishToGet;
 
+		dinnerSelf.Dish.get({id : id},function(data){
+			dishToAdd = data;
+			dishToAdd.type = dinnerSelf.findProperDishType(data.dishTypes);
 			for(var i = 0; i < selectedDishes.length; i++){
 				if(selectedDishes[i].type === dishToAdd.type){
 					dinnerSelf.removeDishFromMenu(selectedDishes[i].id);
 				}
 			}
+			dishToAdd.price = dinnerSelf.totalDishPrice(dishToAdd.extendedIngredients);
+			if(dishToAdd.type == 'starter'){
+				selectedDishes[0] = dishToAdd;
+			}
+			else if(dishToAdd.type == 'main course'){
+				selectedDishes[1] = dishToAdd;
+			}
+			else if(dishToAdd.type == 'dessert'){
+				selectedDishes[2] = dishToAdd;
+			}
+			else{
+				alert("Fail in dish types");
+			}
 
-			selectedDishes.push(dishToAdd);
+		},function(data){
 		});
 
 	}
+
+	this.addDishToMenu(770213);
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
@@ -111,6 +127,14 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 				selectedDishes.splice(i, 1);
 			}
 		}
+	}
+
+	this.totalDishPrice = function (ingredients) {
+		var sum = 0;
+		for(var i = 0; i < ingredients.length; i++){
+			sum += ingredients[i].amount;
+		}
+		return sum * numberOfGuests;
 	}
 
 
@@ -179,13 +203,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 		});
 	}*/
 
-	/*this.findProperDishType = function (obj) {
+	this.findProperDishType = function (obj) {
 		for(var i = 0; i < obj.length; i++){
 			if(obj[i] == 'starter' || obj[i] == 'main course' || obj[i] == 'dessert'){
 				return obj[i];
 			}
 		}
-	} 	*/
+	} 	
 
 	this.addRecipeInformation = function (dish, cb, numberOfDishesToGet){
 		$.ajax({

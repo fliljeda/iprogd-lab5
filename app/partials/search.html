@@ -1,64 +1,43 @@
-<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/dinner-header.html'"></ng-include>
 <ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
 
-<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
-	not support it in free version) and list all the dishes that match the search. -->
 
-	<!--<input ng-model="query"/>
-	<select ng-model="type" name="dishType" ng-change="search(query, type)">
-		<option value="appetizer">Starter</option>
-		<option value="main course">Main</option>
-		<option value="dessert">Dessert</option>
-	</select> -->
-
-	<!-- <button ng-click="search(query, type)">Find</button>
-	{{status}}
-	<ul>
-		<li ng-repeat="dish in dishes">
-			<img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
-			{{dish.title}}
-			<a ng-href="#!/dish/{{dish.id}}">View more</a>
-			Dish ready in {{dish.readyInMinutes}} minutes
-		</li>
-	</ul> -->
-
-	<h3>hej</h3>
-
-
-	<div id="selectDish" style="padding: 0px; display: block;" class="col-md-10">
-		<div class=" container" style="height: 100%;">
-			<div class="row" style="border: 2px solid; background-color: rgb(255, 229, 153);">
-				<div class="row" style="padding-left: 50px;">
-					<h3>SELECT DISH</h3>
+<div id="selectDish" style="padding: 0px; display: block;" class="col-md-10">
+	<div class=" container" style="height: 100%;">
+		<div class="row" style="border: 2px solid; background-color: rgb(255, 229, 153);">
+			<div class="row" style="padding-left: 50px;">
+				<h3>SELECT DISH</h3>
+			</div>
+			<div class=" row">
+				<hr style="margin:10px;margin-left:50px;">
+			</div>
+			<div class="row" style="padding-left: 50px; padding-bottom: 15px;">
+				<div class=" col-md-3" style="padding: 0px;">
+					<input id="selectedDishSearch" ng-model="query"/>
 				</div>
-				<div class=" row">
-					<hr style="margin:10px;margin-left:50px;">
+				<div class=" col-md-2" style="padding: 0px;">
+					<button id="selectedDishSearchButton" class="btn button-default" ng-click="search(query, type)">Find</button>
+					{{status}}
 				</div>
-				<div class="row" style="padding-left: 50px;">
-					<div class=" col-md-3" style="padding: 0px;">
-						<input ng-model="query"/>
-					</div>
-					<div class=" col-md-2" style="padding: 0px;">
-						<button ng-click="search(query, type)">Find</button>
-						{{status}}
-						<ul>
-							<li ng-repeat="dish in dishes">
-								<img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
-								{{dish.title}}
-								<a ng-href="#!/dish/{{dish.id}}">View more</a>
-								Dish ready in {{dish.readyInMinutes}} minutes
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-3" style="display: inline-block;">
-						<select ng-model="type" name="dishType" ng-change="search(query, type)">
-							<option value="appetizer">Starter</option>
-							<option value="main course">Main</option>
-							<option value="dessert">Dessert</option>
-						</select>
-					</div>
+				<div class="col-md-3" style="display: inline-block;">
+					<select id="chosenCourse" ng-model="type" name="dishType" ng-change="search(query, type)">
+						<option value="appetizer">Starter</option>
+						<option value="main course">Main</option>
+						<option value="dessert">Dessert</option>
+					</select>
 				</div>
 			</div>
-			<div class="row" id="foodList"></div>
+		</div>
+		<div class="row" id="foodList">
+			
+			<div class="col col-md-2 foodContainer" ng-repeat="dish in dishes">
+
+				<img class="selectDishFoodPicture" ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"/>
+				<a class="btn button-default selectDishFoodTitle" ng-href="#!/dish/{{dish.id}}">{{dish.title}}</a>
+				
+				Dish ready in {{dish.readyInMinutes}} minutes
+			</div>
+			
 		</div>
 	</div>
+</div>

@@ -1,0 +1,41 @@
+<ng-include src="'partials/dinner-header.html'"></ng-include>
+
+<div style="background-color: white" id="overview_page" class="container" style="display: block;">
+    <div class="row" id="overview_banner">
+        <div class="col-md-4">
+            <h2 id="dinnerGuests">My Dinner: {{guests}} people</h2>
+        </div>
+        <div class="col-md-4"> </div>
+        <div class="col-md-4"> <button class="btn-default" type="button" id="goBackAndEdit"> Go back and edit dinner </button> </div>
+    </div>
+    <div class="row" id="overview_food">
+        <div class="col-md-3"> 
+        </div>
+        <div class="col-md-2"> 
+            <img id="startImage" src="{{menu[0].image}}"> 
+            <span class="name" id="startName">{{menu[0].title}}</span> 
+            <span class="price" id="startPrice">SEK {{dishPriceStarter}}</span> 
+        </div>
+        <div class="col-md-2"> 
+            <img id="mainImage" src="{{menu[1].image}}"> 
+            <span class="name" id="mainName">{{menu[1].title}}</span> 
+            <span class="price" id="mainPrice">SEK {{dishPriceMain}}</span> 
+        </div>
+        <div class="col-md-2"> 
+            <img id="dessertImage" src="{{menu[2].image}}"> 
+            <span class="name" id="dessertName">{{menu[2].title}}</span> 
+            <span class="price" id="dessertPrice">SEK {{dishPriceDessert}}</span> 
+        </div>
+        <div class="col-md-3" id="verticalLine"> 
+            <span class="total"> Total:</span> 
+            <br> 
+            <span class="price" id="totalPriceSpan" style="text-align:left; padding-bottom:0px;">SEK {{dishPriceStarter + dishPriceMain + dishPriceDessert}}</span>
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="overview_print">
+        <div class="col-md-4"> </div>
+        <div class="col-md-4"> <a ng-href="#!/print" class="btn-default" type="button" id="printRecipe"> Print Full Recipe </a> </div>
+        <div class="col-md-4"> </div>
+    </div>
+</div>
