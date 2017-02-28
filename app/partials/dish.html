@@ -11,7 +11,7 @@ Instructions, Ingredients and total cost. -->
             <h3 style="margin-top:10px;" id="dishToShowName">{{dish.title}}</h3>
             <img ng-src="{{dish.image}}" id="foodImage"> 
             <p style="padding-top:15px;" id="dishToShowDesc">{{dish.instructions}}</p>
-            <a ng-href="#!/search" class="btn-default" id="itemDescToSelDishButton">back to Select Dish</a> 
+            <a ng-href="#!/search" ng-click="resetPendingPrice()" class="btn-default" id="itemDescToSelDishButton">back to Select Dish</a> 
         </div>
         <div class="col-md-5" id="ingredients">
             <p id="ingBoxGuestNumber" style="padding-top:10px;" >INGREDIENTS FOR {{guests()}} PEOPLE</p>
@@ -35,7 +35,11 @@ Instructions, Ingredients and total cost. -->
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-8"> <button class="btn-default" type="button" id="confirmDishButton"> Confirm dish </button> </div>
+                <div class="col-md-8">
+                    <a ng-href="#!/search" ng-click="addDishToMenu()"class="btn-default" type="button" id="confirmDishButton"> 
+                        Confirm dish 
+                    </a> 
+                </div>
                 <div class="col-md-2"> SEK </div>
                 <div class="col-md-2" id="totalPrice" >
                     <p>{{totalPrice*guests()}}</p>

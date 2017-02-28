@@ -14,22 +14,22 @@
         <div class="col-md-2"> 
             <img id="startImage" ng-src="{{menu[0].image}}"> 
             <span class="name" id="startName">{{menu[0].title}}</span> 
-            <span class="price" id="startPrice">SEK {{dishPriceStarter}}</span> 
+            <span class="price" id="startPrice">SEK {{dishPriceStarter*guests}}</span> 
         </div>
         <div class="col-md-2"> 
             <img id="mainImage" ng-src="{{menu[1].image}}"> 
             <span class="name" id="mainName">{{menu[1].title}}</span> 
-            <span class="price" id="mainPrice">SEK {{dishPriceMain}}</span> 
+            <span class="price" id="mainPrice">SEK {{dishPriceMain*guests}}</span> 
         </div>
         <div class="col-md-2"> 
             <img id="dessertImage" ng-src="{{menu[2].image}}"> 
             <span class="name" id="dessertName">{{menu[2].title}}</span> 
-            <span class="price" id="dessertPrice">SEK {{dishPriceDessert}}</span> 
+            <span class="price" id="dessertPrice">SEK {{dishPriceDessert*guests}}</span> 
         </div>
         <div class="col-md-3" id="verticalLine"> 
             <span class="total"> Total:</span> 
             <br> 
-            <span class="price" id="totalPriceSpan" style="text-align:left; padding-bottom:0px;">SEK {{dishPriceStarter + dishPriceMain + dishPriceDessert}}</span>
+            <span class="price" id="totalPriceSpan" style="text-align:left; padding-bottom:0px;">SEK {{guests*(dishPriceStarter + dishPriceMain + dishPriceDessert)}}</span>
         </div>
     </div>
     <hr>

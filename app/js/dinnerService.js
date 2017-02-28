@@ -8,6 +8,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	var numberOfGuests = 2;
     var selectedDishes = []; //dishes on the menu
     var currentDishId;
+    var currentDishPrice = 0;
     var APIHeader = {
     	'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
     };
@@ -38,6 +39,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     	return currentDishId;
     }
 
+    this.setCurrentDishPrice = function(price){
+        currentDishPrice = price;
+    }
+    this.getCurrentDishPrice = function(){
+        return currentDishPrice;
+    }
 
     this.setNumberOfGuests = function(num) {
     	numberOfGuests = num;
@@ -78,12 +85,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		var ingredients = this.getAllIngredients();
-		var price = 0;
-		for(var i = 0; i < ingredients.length; i++){
-			price += ingredients[i].price;
-		}
-		return price * numberOfGuests;
+        var sum = 0;
+        for(i in selectedDishes){
+            sum += dinnerSelf.totalDishPrice(selectedDishes[i]);
+        }
+        return sum;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
@@ -94,13 +100,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 		dinnerSelf.Dish.get({id : id},function(data){
 			dishToAdd = data;
 			dishToAdd.type = dinnerSelf.findProperDishType(data.dishTypes);
-			for(var i = 0; i < selectedDishes.length; i++){
-				if(selectedDishes[i].type === dishToAdd.type){
-					dinnerSelf.removeDishFromMenu(selectedDishes[i].id);
-				}
-			}
-			dishToAdd.price = dinnerSelf.totalDishPrice(dishToAdd.extendedIngredients);
-			if(dishToAdd.type == 'starter'){
+			dishToAdd.price = dinnerSelf.totalDishPrice(dishToAdd);
+            if(typeof(dishToAdd.type) == 'undefined'){
+                alert("FoodType is not not allowed in our dinnerplanner, sorry m8");
+            }else if(dishToAdd.type == 'starter'){
 				selectedDishes[0] = dishToAdd;
 			}
 			else if(dishToAdd.type == 'main course'){
@@ -110,7 +113,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 				selectedDishes[2] = dishToAdd;
 			}
 			else{
-				alert("Fail in dish types");
+				alert("Food is not classed as any type recognized");
 			}
 
 		},function(data){
@@ -118,23 +121,40 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 	}
 
-	this.addDishToMenu(770213);
 
 	//Removes dish from menu
-	this.removeDishFromMenu = function(id) {
-		for(var i = 0; i < selectedDishes.length; i++){
-			if(selectedDishes[i].id == id){
-				selectedDishes.splice(i, 1);
-			}
-		}
-	}
+//	this.removeDishFromMenu = function(id) {
+//		for(var i = 0; i < selectedDishes.length; i++){
+//			if(selectedDishes[i].id == id){
+//				selectedDishes.splice(i, 1);
+//			}
+//		}
+//	}
 
-	this.totalDishPrice = function (ingredients) {
+    this.getStarter = function(){
+        return selectedDishes[0];
+    }
+    this.getMainCourse = function(){
+        return selectedDishes[1];
+    }
+    this.getDessert = function(){
+        return selectedDishes[2];
+    }
+
+    this.dishName = function(dish){
+        if(typeof(dish) == 'undefined') return "";
+        return dish.title;
+    }
+
+	this.totalDishPrice = function (dish) {
+        if(typeof(dish) == 'undefined') return 0;
+
+        ingredients = dish.extendedIngredients;
 		var sum = 0;
 		for(var i = 0; i < ingredients.length; i++){
 			sum += ingredients[i].amount;
 		}
-		return sum * numberOfGuests;
+		return sum;
 	}
 
 

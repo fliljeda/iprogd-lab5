@@ -11,15 +11,60 @@
             <p style="float: left;">Dish Name</p>
             <p style="float: right;">Cost</p>
         </div>
-        <div class="row" id="dishRow1"></div>
-        <div class="row" id="dishRow2"></div>
-        <div class="row" id="dishRow3"></div>
+        <div class="row" id="dishRow1">
+            <div class="col col-md-1">
+                <button type="button" class="removeButton" dishid="671414">
+                    x
+                </button>
+            </div>
+            <div class="col col-md-1">
+                {{getNumberOfGuests()}}
+            </div>
+            <div class="col col-md-8">
+                {{getStarterName()}}
+            </div>
+            <div class="col col-md-2" style="text-align: right;">
+                {{getStarterPrice()*getNumberOfGuests()}}
+            </div>
+        </div>
+        <div class="row" id="dishRow2">
+            <div class="col col-md-1">
+                <button type="button" class="removeButton" dishid="671414">
+                    x
+                </button>
+            </div>
+            <div class="col col-md-1">
+                {{getNumberOfGuests()}}
+            </div>
+            <div class="col col-md-8">
+                {{getMainCourseName()}}
+            </div>
+            <div class="col col-md-2" style="text-align: right;">
+                {{getMainCoursePrice()*getNumberOfGuests()}}
+            </div>
+        </div>
+        <div class="row" id="dishRow3">
+            <div class="col col-md-1">
+                <button type="button" class="removeButton" dishid="671414">
+                    x
+                </button>
+            </div>
+            <div class="col col-md-1">
+                {{getNumberOfGuests()}}
+            </div>
+            <div class="col col-md-8">
+                {{getDessertName()}}
+            </div>
+            <div class="col col-md-2" style="text-align: right;">
+                {{getDessertPrice()*getNumberOfGuests()}}
+            </div>
+        </div>
         <div class=" row" id="products">
             <p style="float: left;">Pending</p>
-            <p id="pendingSum" style="float: right;">0</p>
+            <p id="pendingSum" style="float: right;">{{pendingMenuPrice()*getNumberOfGuests()}}</p>
         </div>
         <div id="totalSum">
-            <p style="float: right;">SEK 0</p>
+            <p style="float: right;">{{totalMenuPrice()*getNumberOfGuests()}}</p>
         </div>
         <div id="confirmButton"><a ng-href="#!/dinner-overview" class=" btn-default" type="button">Confirm Dinner</a></div>
     </div>
