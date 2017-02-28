@@ -1,6 +1,6 @@
 body { 
 	padding-top: 106px; 
-	background-image: url("../images/background_tomato_eating.jpg");
+	/*background-image: url("../images/background_tomato_eating.jpg");*/
 	background-size: cover;
 	font-family: "Century Gothic", sans-serif; /* fix font */
 }
@@ -64,9 +64,13 @@ body {
 	border-color: black;
 	font-weight: bolder;
 	font-size: 30px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 }
 
-#confirmButton button {
+#confirmButton a {
 	width:100%;
 	margin-right: 10px;
 	font-size: 15px;
@@ -301,6 +305,7 @@ hr {
 	border-width: 5px;
 	margin-left: 0px;
 	background-color: rgba(255,204,51,0.5); 
+	padding-top: 20px;
 }
 
 #overview_banner .btn-default {
@@ -311,7 +316,7 @@ hr {
 }
 
 #overview_banner h2 {
-	margin-top: 30px;
+	margin-bottom: 20px;
 	margin-left: 30px;
 	font-weight: bold;
 }
