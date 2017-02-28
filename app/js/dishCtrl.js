@@ -4,7 +4,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
 	
 	$scope.dishId = $routeParams.dishId;
-	$scope.guests = Dinner.getNumberOfGuests();
+	$scope.guests = Dinner.getNumberOfGuests;
 	$scope.totalPrice = 0;
 
 	$scope.status = "Searching...";

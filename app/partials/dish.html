@@ -9,27 +9,27 @@ Instructions, Ingredients and total cost. -->
     <div class="row">
         <div class="col-md-5" style="padding-left:30px;">
             <h3 style="margin-top:10px;" id="dishToShowName">{{dish.title}}</h3>
-            <img src="{{dish.image}}" id="foodImage"> 
+            <img ng-src="{{dish.image}}" id="foodImage"> 
             <p style="padding-top:15px;" id="dishToShowDesc">{{dish.instructions}}</p>
             <a ng-href="#!/search" class="btn-default" id="itemDescToSelDishButton">back to Select Dish</a> 
         </div>
         <div class="col-md-5" id="ingredients">
-            <p id="ingBoxGuestNumber" style="padding-top:10px;">INGREDIENTS FOR {{guests}} PEOPLE</p>
+            <p id="ingBoxGuestNumber" style="padding-top:10px;" >INGREDIENTS FOR {{guests()}} PEOPLE</p>
             <hr>
-            <div class="row">
-                <div class="col-md-2" id="ingredientAmount">
-                    <p ng-repeat="ing in dish.extendedIngredients">{{ing.amount}} {{ing.unitShort}}</p>
+            <div class="row" ng-repeat="ing in dish.extendedIngredients">
+                <div class="col-md-3" id="ingredientAmount">
+                    <p>{{ing.amount*guests()}} {{ing.unitShort}}</p>
                 </div>
-                <div class="col-md-6" id="ingredientName">
-                    <p ng-repeat="ing in dish.extendedIngredients">{{ing.name}}</p>
+                <div class="col-md-5" id="ingredientName">
+                    <p>{{ing.name}}</p>
 
                 </div>
                 <div class="col-md-2" id="ingredientCurrency">
-                    <p ng-repeat="ing in dish.extendedIngredients">SEK</p>
+                    <p>SEK</p>
 
                 </div>
                 <div class="col-md-2" id="ingredientPrice">
-                	<p ng-repeat="ing in dish.extendedIngredients">{{ing.amount}}</p>
+                	<p>{{ing.amount*guests()}}</p>
 
                 </div>
             </div>
@@ -37,8 +37,8 @@ Instructions, Ingredients and total cost. -->
             <div class="row">
                 <div class="col-md-8"> <button class="btn-default" type="button" id="confirmDishButton"> Confirm dish </button> </div>
                 <div class="col-md-2"> SEK </div>
-                <div class="col-md-2" id="totalPrice">
-                    <p>{{totalPrice}}</p>
+                <div class="col-md-2" id="totalPrice" >
+                    <p>{{totalPrice*guests()}}</p>
                 </div>
             </div>
         </div>
