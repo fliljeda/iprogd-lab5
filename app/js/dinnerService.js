@@ -3,16 +3,21 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
-	var numberOfGuests = 2;
+
+	var numberOfGuests;
     var selectedDishes = []; //dishes on the menu
     var currentDishId;
     var currentDishPrice = 0;
-    var APIHeader = {
-    	'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
-    };
+    var dinnerSelf = this;
 
+	if(typeof($cookieStore.get('guests')) == 'undefined'){
+		numberOfGuests = 2;
+	}
+	else{
+		numberOfGuests = $cookieStore.get('guests');
+	}
     this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
     	get: {
     		headers: {
@@ -29,7 +34,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     	}
     });
 
-    var dinnerSelf = this;
 
     this.setDishToShow = function(dishId){
     	currentDishId = dishId;
@@ -48,6 +52,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     this.setNumberOfGuests = function(num) {
     	numberOfGuests = num;
+    	$cookieStore.put('guests', num);
     }
 
 	// should return
@@ -95,6 +100,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
+
 		var dishToAdd = {};
 
 		dinnerSelf.Dish.get({id : id},function(data){
@@ -104,12 +110,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
             if(typeof(dishToAdd.type) == 'undefined'){
                 alert("FoodType is not not allowed in our dinnerplanner, sorry m8");
             }else if(dishToAdd.type == 'starter'){
+            	$cookieStore.put('starterId', id);
 				selectedDishes[0] = dishToAdd;
 			}
 			else if(dishToAdd.type == 'main course'){
+				$cookieStore.put('mainId', id);
 				selectedDishes[1] = dishToAdd;
 			}
 			else if(dishToAdd.type == 'dessert'){
+				$cookieStore.put('dessertId', id);
 				selectedDishes[2] = dishToAdd;
 			}
 			else{
@@ -124,12 +133,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	this.removeDishFromMenuByType = function (type) {
 		if(type == 'starter'){
 			delete selectedDishes[0];
+			$cookieStore.remove('starterId');
 		}
 		else if(type == 'main course'){
 			delete selectedDishes[1];
+			$cookieStore.remove('mainId');
 		}
 		else if(type == 'dessert'){
 			delete selectedDishes[2];
+			$cookieStore.remove('dessertId');
 		}
 		else{
 			console.log("Error in removing dish from sidebar: Wrong type - " + type);
@@ -163,71 +175,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	}
 
 
-
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	/*this.getAllDishes = function (type,filter, cb, cberr) {
-
-		var numberOfDishesToGet = 10;
-		var searchString = filter;
-		var dishType = type;
-
-		$.ajax( {
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
-			headers: APIHeader,
-			data: {
-				number : numberOfDishesToGet,
-				query : searchString,
-				type : dishType
-			},
-			success: function(data) {
-				if(data.results.length == 0) cberr(-3000);
-
-				for (var i = 0; i < data.results.length; i++){
-					var dish = {};
-					dish.name = data.results[i].title;
-					dish.image = data.results[i].image;
-					dish.id = data.results[i].id;
-					dish.type = dishType;
-					dinnerSelf.addRecipeInformation(dish, cb, numberOfDishesToGet);
-				}
-
-			},
-			error: function(data) {
-				cberr(404);
-			}
-		});
-	}*/
-
-	//function that returns a dish of specific ID
-	/*this.getDish = function (id,cb) {
-		$.ajax({
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
-			headers : APIHeader,
-			
-			success: function(data){
-				var dish = {};
-				dish.name = data.title;
-				dish.image = data.image;
-				dish.description = data.instructions;
-				dish.id = id;
-				dish.type = dinnerSelf.findProperDishType(data.dishTypes);
-				dish.ingredients = [];
-				for (var j = 0; j < data.extendedIngredients.length; j++){
-					dish.ingredients.push({});
-					dish.ingredients[j].name = data.extendedIngredients[j].name;
-					dish.ingredients[j].quantity = data.extendedIngredients[j].amount;
-					dish.ingredients[j].unit = data.extendedIngredients[j].unitShort;
-					dish.ingredients[j].price = data.extendedIngredients[j].amount;
-				}
-				cb(dish);
-
-			}
-			
-		});
-	}*/
-
 	this.findProperDishType = function (obj) {
 		for(var i = 0; i < obj.length; i++){
 			if(obj[i] == 'starter' || obj[i] == 'main course' || obj[i] == 'dessert'){
@@ -236,26 +183,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 		}
 	} 	
 
-	this.addRecipeInformation = function (dish, cb, numberOfDishesToGet){
-		$.ajax({
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + dish.id + '/information',
-			headers : APIHeader,
-			success: function(data){
-				dish.description = data.instructions;
-				dish.ingredients = [];
-				for (var j = 0; j < data.extendedIngredients.length; j++){
-					dish.ingredients.push({});
-					dish.ingredients[j].name = data.extendedIngredients[j].name;
-					dish.ingredients[j].quantity = data.extendedIngredients[j].amount;
-					dish.ingredients[j].unit = data.extendedIngredients[j].unitShort;
-					dish.ingredients[j].price = data.extendedIngredients[j].amount;
-				}
-				cb(dish, numberOfDishesToGet);
-			}
-		});
-	}
-
-
+	if(!(typeof($cookieStore.get('starterId')) == 'undefined')){
+    	dinnerSelf.addDishToMenu($cookieStore.get('starterId'));
+    }
+    if(!(typeof($cookieStore.get('mainId')) == 'undefined')){
+    	dinnerSelf.addDishToMenu($cookieStore.get('mainId'));
+    }
+    if(!(typeof($cookieStore.get('dessertId')) == 'undefined')){
+    	dinnerSelf.addDishToMenu($cookieStore.get('dessertId'));
+    }
 
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead
