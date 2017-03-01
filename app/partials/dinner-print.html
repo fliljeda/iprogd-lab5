@@ -8,7 +8,7 @@
         <div class="col-md-4"> </div>
         <div class="col-md-4" id="backButtonDiv"> <a ng-href="#!/search" class="btn-default" id="goBackAndEditFromPrint">Go back and edit dinner</a></div>
     </div>
-    <div class="row" id="dishSummary">
+    <div class="row ng-hide" ng-show="showStarter" id="dishSummary">
         <div class="col-md-2"><img src="{{menu[0].image}}"></div>
         <div class="col-md-4">
             <h2>{{menu[0].title}}</h2>
@@ -21,7 +21,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
         </div>
     </div>
-    <div class="row" id="dishSummary">
+    <div class="row ng-hide" id="dishSummary" ng-show="showMain">
         <div class="col-md-2"><img src="{{menu[1].image}}"></div>
         <div class="col-md-4">
             <h2>{{menu[1].title}}</h2>
@@ -34,7 +34,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
         </div>
     </div>
-    <div class="row" id="dishSummary">
+    <div class="row ng-hide" id="dishSummary" ng-show="showDessert">
         <div class="col-md-2"><img src="{{menu[2].image}}"></div>
         <div class="col-md-4">
             <h2>{{menu[2].title}}</h2>

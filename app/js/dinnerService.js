@@ -58,7 +58,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
 		for(var i = 0; i < selectedDishes.length; i++){
-			if(selectedDishes[i].type == type){
+			if(!(typeof(selectedDishes[i]) == 'undefined') && selectedDishes[i].type == type){
 				return selectedDishes[i];
 			}
 		}
@@ -121,15 +121,20 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
 	}
 
-
-	//Removes dish from menu
-//	this.removeDishFromMenu = function(id) {
-//		for(var i = 0; i < selectedDishes.length; i++){
-//			if(selectedDishes[i].id == id){
-//				selectedDishes.splice(i, 1);
-//			}
-//		}
-//	}
+	this.removeDishFromMenuByType = function (type) {
+		if(type == 'starter'){
+			delete selectedDishes[0];
+		}
+		else if(type == 'main course'){
+			delete selectedDishes[1];
+		}
+		else if(type == 'dessert'){
+			delete selectedDishes[2];
+		}
+		else{
+			console.log("Error in removing dish from sidebar: Wrong type - " + type);
+		}
+	}
 
     this.getStarter = function(){
         return selectedDishes[0];

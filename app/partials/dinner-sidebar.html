@@ -5,15 +5,15 @@
         </div>
         <div class=" row" id="ppl" style="height: 30px;">
             <p style="float: left; padding-top: 5px; padding-right: 5px;">People</p>
-            <input id="textbox" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+            <input id="textbox" min="1" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
         </div>
         <div class=" row" id="dishName">
             <p style="float: left;">Dish Name</p>
             <p style="float: right;">Cost</p>
         </div>
-        <div class="row" id="dishRow1">
+        <div class="row ng-hide" id="dishRow1" ng-show="checkDish('starter')">
             <div class="col col-md-1">
-                <button type="button" class="removeButton" dishid="671414">
+                <button type="button" class="removeButton" data-ng-click="removeDish('starter')">
                     x
                 </button>
             </div>
@@ -27,9 +27,9 @@
                 {{getStarterPrice()*getNumberOfGuests()}}
             </div>
         </div>
-        <div class="row" id="dishRow2">
+        <div class="row" id="dishRow2" ng-show="checkDish('main course')">
             <div class="col col-md-1">
-                <button type="button" class="removeButton" dishid="671414">
+                <button type="button" class="removeButton" data-ng-click="removeDish('main course')">
                     x
                 </button>
             </div>
@@ -43,9 +43,9 @@
                 {{getMainCoursePrice()*getNumberOfGuests()}}
             </div>
         </div>
-        <div class="row" id="dishRow3">
+        <div class="row" id="dishRow3" data-ng-show="checkDish('dessert')">
             <div class="col col-md-1">
-                <button type="button" class="removeButton" dishid="671414">
+                <button type="button" class="removeButton" data-ng-click="removeDish('dessert')">
                     x
                 </button>
             </div>
